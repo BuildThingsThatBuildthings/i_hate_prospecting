@@ -1,0 +1,234 @@
+research_company_task:
+  description: >
+    Conduct in-depth research on {target_company} to compile a comprehensive profile that illuminates opportunities for {our_product}. Use the following context to guide your work:
+
+    **Target Objective:**
+    - Identify potential buyers by understanding {target_company}'s priorities, challenges, and market position.
+    - Highlight how {our_product} can solve specific problems or enhance their operations.
+
+    **Focus Areas:**
+    - Company essentials: size, industry, headquarters, key verticals.
+    - Recent developments: expansions, product launches, or leadership shifts.
+    - Financial health: revenue trends, profitability, investment signals.
+    - Strategic goals: initiatives from reports, press, or executive statements.
+    - Pain points: challenges {our_product} can address (e.g., inefficiencies, competition).
+    - Market context: competitors, partnerships, industry trends.
+
+    **Best Practices:**
+    - Leverage diverse sources: company website, financial statements, news outlets, LinkedIn, Crunchbase.
+    - Prioritize actionable insights over raw data—connect the dots for the sales team.
+    - Keep findings concise yet detailed, focusing on sales-relevant takeaways.
+
+    Synthesize your research into a report that equips the team to pitch {our_product} with confidence, showcasing Build Things That Build Things' value proposition.
+  expected_output: >
+    A polished research report on {target_company}, including:
+    - **Overview:** Core company details (size, industry, etc.).
+    - **Developments:** Key recent events or shifts.
+    - **Financials:** Snapshot of performance (if available).
+    - **Goals:** Strategic priorities and initiatives.
+    - **Opportunities:** Specific challenges or needs tied to {our_product}.
+    - **Context:** Competitive landscape and partnerships.
+    - **Format:** Markdown-formatted document named `{target_company}_research.md`.
+  agent: company_researcher
+
+analyze_org_structure_task:
+  description: >
+    Analyze {target_company}'s organizational structure to identify decision-making roles critical to purchasing {our_product}, building on the company research profile. Use this context:
+
+    **Target Objective:**
+    - Pinpoint who within {target_company} has the authority or influence to approve {our_product}.
+    - Understand the decision-making process to streamline sales targeting.
+
+    **Focus Areas:**
+    - Hierarchy: Map reporting lines and key departments (e.g., IT, Operations).
+    - Roles: Identify C-suite (CEO, CFO), department heads, procurement leads, or influencers.
+    - Dynamics: Note committees, cross-functional teams, or industry-specific norms.
+    - Changes: Highlight recent restructures or leadership transitions.
+
+    **Best Practices:**
+    - Use public resources: company site ("Leadership" pages), LinkedIn profiles, org charts.
+    - Cross-reference with research_company_task findings for accuracy.
+    - Provide reasoning for each role's relevance to {our_product}'s sale.
+
+    Deliver a clear, actionable analysis that directs the sales team to the right players at {target_company}.
+  expected_output: >
+    A detailed structure report on {target_company}, including:
+    - **Hierarchy Overview:** Snapshot of the org structure.
+    - **Key Roles:** List of decision-makers with titles and relevance to {our_product}.
+    - **Rationale:** Why each role matters for the sales process.
+    - **Insights:** Notes on decision-making culture or recent changes.
+    - **Format:** Markdown-formatted document named `{target_company}_org_structure.md`.
+  agent: org_structure_analyst
+
+find_key_contacts_task:
+  description: >
+    Using the decision-making roles identified in analyze_org_structure_task, locate specific individuals at {target_company} who can champion or approve {our_product}. Follow this context:
+
+    **Target Objective:**
+    - Provide accurate, verified contact details for sales outreach.
+    - Ensure contacts align with {our_product}'s value proposition.
+
+    **Focus Areas:**
+    - Identity: Full name, exact title, department.
+    - Contact Info: Work email, phone number, LinkedIn URL.
+    - Relevance: Background or activities tying them to {our_product}'s benefits.
+
+    **Best Practices:**
+    - Source from LinkedIn, email finders (Hunter.io, Clearbit), company directories.
+    - Verify details via multiple channels for reliability.
+    - Include fallback options (e.g., email patterns) if direct info is unavailable.
+
+    Compile a list that empowers the sales team to connect with precision and confidence.
+  expected_output: >
+    A verified contact list for {target_company}, including:
+    - **Name:** Full name of each individual.
+    - **Title:** Exact role within the company.
+    - **Contact:** Email, phone, LinkedIn (verified).
+    - **Note:** Brief tie to {our_product}'s relevance.
+    - **Format:** Markdown-formatted document named `{target_company}_contacts.md`.
+  agent: contact_finder
+
+develop_approach_strategy_task:
+  description: >
+    Synthesize the outputs from research_company_task, analyze_org_structure_task, and find_key_contacts_task to create a tailored sales strategy for engaging {target_company}'s decision-makers about {our_product}. Use this context:
+
+    **Target Objective:**
+    - Design an approach that maximizes engagement and conversion potential.
+    - Position Build Things That Build Things as the go-to solution provider.
+
+    **Focus Areas:**
+    - **Channels:** Best outreach methods per contact (email, LinkedIn, call).
+    - **Messaging:** Personalized pitches tying {our_product} to their needs.
+    - **Timing:** Cadence for initial outreach and follow-ups.
+    - **Tactics:** Extras like industry hooks, demos, or referrals.
+
+    **Best Practices:**
+    - Tailor messages to research insights (e.g., recent challenges or goals).
+    - Use conversational, value-first language—avoid hard sells.
+    - Suggest a mix of channels based on role and preference.
+    - End with a subtle nod to Ryan at Build Things That Build Things (ryan@buildthingsthatbuildthings.com).
+
+    Deliver a strategy that’s practical, persuasive, and ready to execute.
+  expected_output: >
+    A comprehensive sales strategy plan, including:
+    - **Overview:** Core approach and objectives.
+    - **Contact Plans:** Channel, message, and timing for each individual.
+    - **Follow-ups:** Schedule and tactics.
+    - **Extras:** Supporting ideas or resources.
+    - **Sign-off:** "Cheers, Ryan 👷‍♂️🚀" with contact ryan@buildthingsthatbuildthings.com.
+    - **Format:** Markdown-formatted document named `{target_company}_sales_strategy.md`.
+  agent: sales_strategist
+
+generate_prospecting_report_task:
+  description: >
+    Using the outputs from research_company_task, analyze_org_structure_task, find_key_contacts_task, and develop_approach_strategy_task, generate a detailed, client-facing Prospecting Report for {target_company}. This report must synthesize all gathered data into a polished deliverable that highlights how {our_product} addresses {target_company}'s key pain points and provides a clear sales strategy. Use Composio tools to upload the report to Google Drive and notify the team via Slack. Follow this context:
+
+    **Target Objective:**
+    - Create a professional, actionable report that the sales team can use to pitch {our_product} to {target_company}.
+    - Automate the delivery process by uploading to Google Drive and notifying the team via Slack.
+
+    **Focus Areas:**
+    - **Company Overview:** Summarize {target_company}'s profile, challenges, and opportunities.
+    - **Key Contacts:** List decision-makers with their roles and contact details.
+    - **Sales Strategy:** Detail tailored outreach plans, including messaging and timing.
+    - **Value Proposition:** Highlight how {our_product} solves specific pain points identified in prior tasks.
+
+    **Best Practices:**
+    - Structure the report with clear sections using Markdown headers (e.g., #, ##) for readability.
+    - Use concise, persuasive language tailored to a client-facing audience.
+    - Incorporate actionable insights from prior tasks, ensuring alignment with {our_product}'s benefits.
+    - Use Composio tools for seamless integration:
+      - Google Drive: Upload to a specified folder.
+      - Slack: Post a notification with the file link and a brief message.
+
+    **Execution Steps:**
+    1. Compile data from previous tasks into a cohesive report.
+    2. Format the report in Markdown with sections for Company Overview, Key Contacts, Sales Strategy, and Value Proposition.
+    3. Save the report as `{target_company}_prospecting_report.md`.
+    4. Use Composio's Google Drive tool to:
+       - Create or use the folder '{folder}' in Google Drive.
+       - Upload `{target_company}_prospecting_report.md` to '{folder}'.
+    5. Use Composio's Slack tool to:
+       - Send a notification to the '{slack_channel}' Slack channel with the message:
+         "New Prospecting Report for {target_company} uploaded to Google Drive: [link]. Ready for review by Ryan @ Build Things That Build Things."
+       - Include the Google Drive file link in the message.
+
+    Deliver a report that’s both a strategic tool for the sales team and a polished client-facing document.
+  expected_output: >
+    A comprehensive Prospecting Report for {target_company}, including:
+    - **Company Overview:** A concise summary of {target_company}'s profile, challenges, and opportunities.
+    - **Key Contacts:** A list of decision-makers with names, titles, departments, and contact details (email, phone, LinkedIn).
+    - **Sales Strategy:** Tailored outreach plans with channels, messaging, timing, and follow-up cadence.
+    - **Value Proposition:** A compelling explanation of how {our_product} addresses {target_company}'s pain points.
+    - **Format:** Markdown-formatted document named `{target_company}_prospecting_report.md`.
+    - **Delivery:**
+      - File uploaded to Google Drive in the folder '{folder}'.
+      - Slack notification sent to '{slack_channel}' with the file link and message:
+        "New Prospecting Report for {target_company} uploaded to Google Drive: [link]. Ready for review by Ryan @ Build Things That Build Things."
+  agent: sales_strategist
+
+create_branded_report_website_task:
+  description: >
+    Using the Prospecting Report from generate_prospecting_report_task, review and refine the content to align with Build Things That Build Things’ brand identity, personalize it for {target_company}, and create a simple, attractive HTML website to present the client-facing deliverable. Leverage your expertise in design and client presentation to ensure a professional, engaging experience. Follow this context:
+
+    **Target Objective:**
+    - Ensure the report feels tailored to {target_company} and reflects Build Things That Build Things’ innovative, solution-focused brand.
+    - Deliver a visually appealing HTML website that enhances the report’s impact and serves as a persuasive sales tool.
+
+    **Focus Areas:**
+    - **Brand Alignment:** Incorporate Build Things That Build Things’ brand elements:
+      - Tone: Bold, approachable, and forward-thinking.
+      - Visuals: Clean design with a modern color scheme (e.g., navy blue, orange accents, white background).
+      - Messaging: Emphasize innovation and problem-solving tied to {our_product}.
+    - **Personalization:** Tailor the report to {target_company}’s specific challenges, goals, and industry context.
+    - **Website Design:** Create a single-page HTML site with:
+      - Header: Company logo, {target_company} name, and tagline.
+      - Sections: Overview, Key Contacts, Strategy, Value Proposition (mirroring report structure).
+      - Footer: Contact info (Ryan @ Build Things That Build Things, ryan@buildthingsthatbuildthings.com).
+    - **Usability:** Ensure the site is responsive, skimmable, and visually engaging.
+
+    **Best Practices:**
+    - Review the report for consistency with brand tone (e.g., replace generic phrases with bold statements like “We build solutions that build success”).
+    - Personalize by weaving in {target_company}-specific details (e.g., “How {our_product} tackles [specific challenge] at {target_company}”).
+    - Use clean HTML/CSS:
+      - Minimalist design with ample white space.
+      - Readable fonts (e.g., Roboto, 16px base size).
+      - Subtle animations (e.g., hover effects on buttons) for polish.
+    - Optimize for client appeal: Focus on clarity, value, and a call-to-action (e.g., “Let’s talk solutions—reach out to Ryan”).
+
+    **Execution Steps:**
+    1. **Review & Refine Report:**
+       - Load `{target_company}_prospecting_report.md` from generate_prospecting_report_task.
+       - Adjust content to reflect Build Things That Build Things’ brand tone and personalize for {target_company}.
+    2. **Design HTML Website:**
+       - Create a single-page layout with header, content sections, and footer.
+       - Use inline CSS for simplicity, incorporating brand colors and modern design principles.
+       - Structure content into skimmable sections based on the report (Overview, Key Contacts, Strategy, Value Proposition).
+    3. **Save & Deliver:**
+       - Save the website as `{target_company}_prospecting_report.html`.
+       - Find the folder 'BTTBT BRAND KIT' in Google Drive.
+       - Use Composio’s Google Drive tool to:
+         - Upload `{target_company}_prospecting_report.html` to the '{folder}' folder in Google Drive.
+       - Use Composio’s Slack tool to:
+         - Send a notification to '{slack_channel}' with the message:
+           "Branded Prospecting Website for {target_company} is live: [link]. Reviewed and ready for Ryan @ Build Things That Build Things."
+         - Include the Google Drive file link.
+
+    Deliver a branded, client-ready website that elevates the sales pitch for {our_product}.
+  
+  expected_output: >
+    A branded HTML website presenting the Prospecting Report, including:
+    - **Refined Report Content:**
+      - **Overview:** Branded summary of {target_company}’s profile and opportunities.
+      - **Key Contacts:** List of decision-makers with personalized relevance to {our_product}.
+      - **Sales Strategy:** Tailored outreach plans with Build Things That Build Things’ bold tone.
+      - **Value Proposition:** Compelling, branded explanation of {our_product}’s benefits.
+    - **Website Design:**
+      - Single-page HTML file named `{target_company}_prospecting_report.html`.
+      - Responsive layout with header (logo, tagline), content sections, and footer (Ryan’s contact).
+      - Modern styling: Navy blue (#1E3A8A), orange (#F97316), white (#FFFFFF), Roboto font.
+    - **Delivery:**
+      - File uploaded to Google Drive in '{folder}'.
+      - Slack notification sent to '{slack_channel}' with the message:
+        "Branded Prospecting Website for {target_company} is live: [link]. Reviewed and ready for Ryan @ Build Things That Build Things."
+  agent: brand_alignment_agent
