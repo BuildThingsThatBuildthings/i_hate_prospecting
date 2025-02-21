@@ -60,3 +60,4 @@ nosetests.xml
 coverage.xml
 *.cover
 .hypothesis/
+src/sales_contact_finder/.env
